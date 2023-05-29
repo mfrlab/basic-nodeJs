@@ -14,5 +14,11 @@
     "Sequelize"
   ],
   "author": "rawzee",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mysql2": "^3.3.3",
+    "sequelize": "^6.31.1"
+  }
 }
