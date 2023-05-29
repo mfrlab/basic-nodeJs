@@ -10,3 +10,12 @@ Tech stack using Javasript, Sql, Sequelize, ExpressJS
 ```
 
 # Getting Started
+- Clone Project
+```
+move to your local directory
+Git Clone <project repository on git>
+```
+- Install Dependencies
+```
+npm install
+```
