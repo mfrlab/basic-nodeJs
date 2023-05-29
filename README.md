@@ -19,3 +19,11 @@ Git Clone <project repository on git>
 ```
 npm install
 ```
+- Setup Environment
+```
+setup file .env
+```
+- Running Project
+```
+npm run <script>
+```
