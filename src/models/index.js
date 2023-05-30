@@ -19,5 +19,6 @@ db.Sequelize = Sequelize
 db.sequelize = sequelize
 
 // import models
+db.items = require('./items')(sequelize, Sequelize)
 
 module.exports = db
