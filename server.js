@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const db = require('./src/models')
+const { db } = require('./src/models')
 
 const app = express()
 
@@ -18,7 +18,7 @@ app.use(express.urlencoded({extended: true}))
 
 // create route
 
-db.sequelize.sync()
+db.sync()
 .then(() => {
     console.log('db synced')
 })

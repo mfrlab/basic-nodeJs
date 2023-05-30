@@ -1,10 +1,13 @@
 const dbConfig = require('../config/database')
 const env = process.env.NODE_ENV || 'development'
-
 const Sequelize = require('sequelize')
-const sequelize = new Sequelize(dbConfig[env].database, dbConfig[env].username, dbConfig[env].password, {
+
+const db = new Sequelize(dbConfig[env].database, dbConfig[env].username, dbConfig[env].password, {
     host: dbConfig[env].hostname,
     dialect: dbConfig[env].dialect,
+    logging: ((sql, timing) => {
+        console.log(timing + ' ms' + sql)
+    }),
     pool: {
         max: dbConfig[env].max,
         min: dbConfig[env].min,
@@ -13,12 +16,13 @@ const sequelize = new Sequelize(dbConfig[env].database, dbConfig[env].username, 
     }
 })
 
-const db = {}
-
-db.Sequelize = Sequelize
-db.sequelize = sequelize
+module.exports = {
+    db
+}
 
 // import models
-db.items = require('./items')(sequelize, Sequelize)
+const Items = require('./Items')
 
-module.exports = db
+module.exports = {
+    db, Items
+}

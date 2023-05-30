@@ -1,15 +1,26 @@
-module.exports = (sequelize, Sequelize) => {
-    const items = sequelize.define("items", {
-        code: {
-            type: Sequelize.STRING
-        },
-        name: {
-            type: Sequelize.STRING
-        },
-        desciption: {
-            type: Sequelize.STRING
-        }
-    })
+const { Model, DataTypes } = require('sequelize')
+const { db } = require('./index')
 
-    return items
+class Items extends Model {
+
 }
+
+Items.init({
+    code: {
+        type: DataTypes.STRING
+    },
+    name: {
+        type: DataTypes.STRING
+    },
+    desciption: {
+        type: DataTypes.STRING
+    }
+}, {
+    modelName: 'Items',
+    tableName: 'items',
+    sequelize: db,
+    timestamps: true,
+    underscored: false
+})
+
+module.exports = Items
