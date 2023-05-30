@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+const db = require('./src/models')
 
 const app = express()
 
@@ -16,6 +17,14 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 // create route
+
+db.sequelize.sync()
+.then(() => {
+    console.log('db synced')
+})
+.catch((err) => {
+    console.log('failed sync db err: ' + err.message)
+})
 
 const PORT = process.env.PORT || 8000 
 app.listen(PORT, () => {
